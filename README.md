@@ -1,5 +1,5 @@
-# game-offload-article
-The code used to generate the figures in the game theory-offloading article. The program is mainly written in python and the purpose of this repository is to let the interested reader both replicate the paper results and play around in the simulation with different conditions.
+# Software used in the Game-Offload Article
+The code used to generate the figures in the game theory-offloading article ("Scalable Orchestration of Dynamic 6G Control Computations"). The program is mainly written in python and the purpose of this repository is to let the interested reader both replicate the paper results and play around in the simulation with different conditions.
 
 ## Abstract (from the associated article)
 In this work, by focusing on scalability rather than optimality, a decentralized resource allocation policy for control computations is proposed. It is showed that this policy is guaranteed to converge to a satisfactory solution when the devices only have information about available computational resources on a few close servers. It is also shown that the worst- case number of strategy updates scales linearly with the number of agents, even if the devices are distributed over different network cells and the system includes numerous servers. Finally, the linear convergence behavior is also shown in simulation, where the simulation code is provided to the reader.

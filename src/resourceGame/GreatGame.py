@@ -247,17 +247,6 @@ class GreatGame:
     """
     def runSequence(self, plotOption, printOption):
         self.runAndCompete(10, printOption)
-        #self.connectAllUAVsToRandomAntennas()
-        #self.runAndCompete(1)
-        #self.removeNRandomUAVs(10)
-        #self.runAndCompete(1)
-        #self.removeNRandomUAVs(10)
-        #self.runAndCompete(1)
-        #self.removeNRandomUAVs(10)
-        #self.runAndCompete(1)
-        #self.addMultipleUAVs(70)
-        #self.connectAllUAVsToRandomAntennas()
-        #self.runAndCompete(1)
 
         if plotOption:
             self.plotPotentialFunction()
@@ -292,6 +281,26 @@ class GreatGame:
                    'nbrEdge': edgeUAVs,
                    'nbrCloud': cloudUAVs}
         return relData
+
+    # Reset metrics at the start of a new game. For analysing cascaded best-response chains.    
+    def resetMetrics(self):
+        self.PotentialFunctionInit = self.potentialFunction()
+        self.avgTaskTimeInit = self.avgTaskTime()
+        self.hasConverged = False
+        for UAV in self.aUAVs:
+            UAV.resetMetrics()
+
+    # Remove n UAVS from the game that offload to edge servers
+    def removeNUAVsOffloadingToEdge(self, nUAVs):
+        offloadingUAVs = [UAV for UAV in self.aUAVs if UAV.strategy != 0 and UAV.serverInfo[0].type == "edge"]
+        if nUAVs > len(offloadingUAVs):
+            raise IndexError("Tried to remove too many UAVs offloading to edge servers.")
+        IDs = rnd.sample([UAV.ID for UAV in offloadingUAVs], k=nUAVs)
+        for UAV in self.aUAVs:
+            if UAV.ID in IDs:
+                UAV.disconnectFromServer()
+                self.aUAVs.remove(UAV)
+
 
 
     """

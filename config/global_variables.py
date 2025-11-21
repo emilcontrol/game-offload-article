@@ -1,7 +1,8 @@
 # Global variables
+#maxBandwidth=5000000000 #5GBit/s (bitrate)
 
-# This one dividing NMPCcycles_expected to get vmax in the article.
-cpuEdge = 50000000000 #ÄNDRAD! Ta bort en nolla! #10GHz to share on the edge. 10^10
+# This one dividing NMPCcycles_expected to get vmax
+cpuEdge = 5000000000 #10GHz to share on the edge. 10^10
 
 cpuCloudPerUAV = 20000000000 #20GHz in cloud for each UAV. 2*10^10. Note that to get v_c from the paper, NMPCcycles_expected is
 # divided by this number.
@@ -15,13 +16,13 @@ v_l_max = 0.15 #local maximum time for nominal task.
 NMPCcycles_expected = 200000000 #Expected Cpu cycles to perform a NMPC calculation. 2*10^8
 NMPCcycles_expected_weightFactor_min = 1 # uniform distribution min to max in weight of cycles
 NMPCcycles_expected_weightFactor_max = 2 # uniform distribution min to max in weight of cycles
-NMPCcyclesPlusMinus=50000000 #optimizion steps required will vary a bit, even if not expected.
+NMPCcyclesPlusMinus=50000000 #optimizion steps required will vary a bit, even if not  expected.
 
 avgRTT_edge=0.02 #Average RTT from antenna to Edge server
-RTTPlusMinus_edge=0.01 #Uniform distribution with this value representing the min/max deviation from avgRTT_edge
+RTTPlusMinus_edge=0.01 #Variance between units
 
 avgRTT_cloud=0.1 #Average RTT from antenna to Cloud server
-RTTPlusMinus_cloud=0.02 #Uniform distribution with this value representing the min/max deviation from avgRTT_cloud
+RTTPlusMinus_cloud=0.02 #Variance between units
 
 tImprovementReq = 0.05 #Required improvement (percent/100) in time for device to update strategy
 

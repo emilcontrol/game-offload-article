@@ -32,7 +32,11 @@ class GameUAV:
         self.nbrStrategyUpdates = 0
         self.nbrNMPCexecutions = 0
 
-        
+    # Reset metrics at the start of a new game. For analysing cascaded best-response chains.
+    def resetMetrics(self):
+        self.nbrStrategyUpdates = 0
+        self.nbrNMPCexecutions = 0
+
     # Connect to the internet (antenna)
     def connectToInternet(self,antenna):
         self.antenna=antenna
